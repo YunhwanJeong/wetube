@@ -1,6 +1,4 @@
-
-
-//Global
+// Global
 
 const HOME = "/";
 const JOIN = "/join";
@@ -8,14 +6,14 @@ const LOGIN = "/login";
 const LOGOUT = "/logout";
 const SEARCH = "/search";
 
-//Users
+// Users
 
 const USERS = "/users";
 const USER_DETAIL = "/:id";
 const EDIT_PROFILE = "/edit-profile";
 const CHANGE_PASSWORD = "/change-password";
 
-//Videos
+// Videos
 
 const VIDEOS = "/videos";
 const UPLOAD = "/upload";
@@ -30,38 +28,34 @@ const routes = {
   logout: LOGOUT,
   search: SEARCH,
   users: USERS,
-  userDetail: (id) => {
-    if(id) {
+  userDetail: id => {
+    if (id) {
       return `${USERS}/${id}`;
-    } else {
-      return USER_DETAIL;
     }
+    return USER_DETAIL;
   },
   editProfile: EDIT_PROFILE,
   changePassword: CHANGE_PASSWORD,
   videos: VIDEOS,
   upload: UPLOAD,
-  videoDetail: (id) => {
-    if(id) {
+  videoDetail: id => {
+    if (id) {
       return `${VIDEOS}/${id}`;
-    } else {
-      return VIDEO_DETAIL;
     }
+    return VIDEO_DETAIL;
   },
-  editVideo: (id) => {
-    if(id) {
+  editVideo: id => {
+    if (id) {
       return `${VIDEOS}/${id}/edit`;
-    } else {
-      return EDIT_VIDEO;
     }
+    return EDIT_VIDEO;
   },
-  deleteVideo: (id) => {
-    if(id) {
+  deleteVideo: id => {
+    if (id) {
       return `${VIDEOS}/${id}/delete`;
-    } else {
-      return DELETE_VIDEO; 
     }
-  } 
-}
+    return DELETE_VIDEO;
+  }
+};
 
 export default routes;
