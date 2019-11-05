@@ -50,14 +50,14 @@ const routes = {
   },
   editVideo: (id) => {
     if(id) {
-      return `${VIDEOS}/${id}`;
+      return `${VIDEOS}/${id}/edit`;
     } else {
       return EDIT_VIDEO;
     }
   },
   deleteVideo: (id) => {
     if(id) {
-      return `${VIDEOS}/${id}`;
+      return `${VIDEOS}/${id}/delete`;
     } else {
       return DELETE_VIDEO; 
     }
