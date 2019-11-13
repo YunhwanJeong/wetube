@@ -7,7 +7,7 @@ export const localsmiddleware = (req, res, next) => {
   res.locals.siteName = "WeTube";
   res.locals.routes = routes;
   res.locals.user = {
-    isAuthentication: true,
+    isAuthentication: false,
     id: 1
   };
   next();

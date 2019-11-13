@@ -17,31 +17,31 @@
       &:nth-child(2) {
         width: 100%;
         justify-self: center;
-        form {
-          width: 100%;
-          input {
-            padding: 7px 10px;
-            width: 100%;
-            border-radius: 5px;
-            font-size: 14px;
-            color: $black;
-            font-weight: 600;
-            &::placeholder {
-              font-weight: 300;
-              color: rgba(0, 0, 0, 0.7);
-            }
-          }
-        }
       }
       &:last-child {
         justify-self: end;
-        ul {
-          display: flex;
-          color: white;
+      }
+      ul {
+        display: flex;
+        color: white;
+        font-weight: 600;
+        text-transform: uppercase;
+        li:not(:last-child) {
+          margin-right: 15px;
+        }
+      }
+      form {
+        width: 100%;
+        input {
+          padding: 7px 10px;
+          width: 100%;
+          border-radius: 5px;
+          font-size: 14px;
+          color: $black;
           font-weight: 600;
-          text-transform: uppercase;
-          li:not(:last-child) {
-            margin-right: 15px;
+          &::placeholder {
+            font-weight: 300;
+            color: rgba(0, 0, 0, 0.7);
           }
         }
       }
