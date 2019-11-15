@@ -9,8 +9,9 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: 300px;
-    input {
+    max-width: 326px;
+    input:not([type="file"]),
+    .file-upload {
       width: 100%;
       padding-top: 10px;
       padding-bottom: 10px;
@@ -27,5 +28,19 @@
       background-color: #3498db;
       color: white;
     }
+    textarea {
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+      margin-bottom: 25px;
+    }
+    .file-upload {
+      label {
+        font-weight: 300;
+        margin-right: 10px;
+      }
+    }
+  }
+  a {
+    width: 100%;
+    max-width: 280px;
   }
 }

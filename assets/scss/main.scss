@@ -19,15 +19,36 @@ main {
 }
 
 button,
-input {
+input:not([type="file"]),
+.file-upload,
+textarea {
   padding: 7px 10px;
+  border: none;
   border-radius: 5px;
   width: 100%;
+  max-width: 320px;
   font-size: 14px;
   color: $black;
   font-weight: 600;
+  background-color: white;
+  resize: none;
   &::placeholder {
     font-weight: 300;
     color: rgba(0, 0, 0, 0.7);
   }
+}
+
+button {
+  border: none;
+  background-color: #3498db;
+  color: white;
+  cursor: pointer;
+}
+
+button.delete {
+  background-color: $dark-red;
+}
+
+input[type*="submit"] {
+  cursor: pointer;
 }
