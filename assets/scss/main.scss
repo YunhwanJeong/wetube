@@ -2,6 +2,7 @@ html,
 body {
   height: 100%;
 }
+
 body {
   background-color: $grey;
   color: $black;
@@ -15,4 +16,18 @@ main {
   max-width: 1400px;
   margin: 0 auto;
   min-height: 70vh;
+}
+
+button,
+input {
+  padding: 7px 10px;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 14px;
+  color: $black;
+  font-weight: 600;
+  &::placeholder {
+    font-weight: 300;
+    color: rgba(0, 0, 0, 0.7);
+  }
 }
