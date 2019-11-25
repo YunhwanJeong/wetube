@@ -1,4 +1,19 @@
 extends layouts/main
 
 block content
-  p userDetail
+  .user-profile
+    .user-profile__header
+      img.user-avatar(src=user.avatarUrl)
+      h4.user-profile__username #{user.name}
+    if user.id === loggedInUser.id  
+      .user-profile__bts
+        a(href=`${routes.users}${routes.editProfile}`)
+          button
+            span
+              i.far.fa-edit
+            |Edit Profile
+        a(href=`${routes.users}${routes.changePassword}`)
+          button
+            span
+              i.fas.fa-lock
+            |Change Password

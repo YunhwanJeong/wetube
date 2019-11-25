@@ -5,6 +5,11 @@ const JOIN = "/join";
 const LOGIN = "/login";
 const LOGOUT = "/logout";
 const SEARCH = "/search";
+const ME = "/me";
+const GITHUB = "/auth/github";
+const GITHUB_CALLBACK = "/auth/github/callback";
+const FACEBOOK = "/auth/facebook";
+const FACEBOOK_CALLBACK = "/auth/facebook/callback";
 
 // Users
 
@@ -27,6 +32,11 @@ const routes = {
   login: LOGIN,
   logout: LOGOUT,
   search: SEARCH,
+  me: ME,
+  github: GITHUB,
+  githubCallback: GITHUB_CALLBACK,
+  facebook: FACEBOOK,
+  facebookCallback: FACEBOOK_CALLBACK,
   users: USERS,
   userDetail: id => {
     if (id) {
