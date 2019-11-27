@@ -1,6 +1,7 @@
 .videoPlayer {
   position: relative;
   video {
+    width: 100%;
     max-width: 100%;
   }
   &:hover {
