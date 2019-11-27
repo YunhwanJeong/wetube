@@ -1,4 +1,5 @@
 extends layouts/main
+include mixins/videoBlock
 
 block content
   .user-profile
@@ -17,3 +18,12 @@ block content
             span
               i.fas.fa-lock
             |Change Password
+    .videoTemplate
+      each item in user.videos
+        +videoBlock({
+          id: item.id,
+          videoFile: item.fileUrl,
+          title: item.title,
+          views: item.views
+        })
+        

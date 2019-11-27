@@ -1,0 +1,43 @@
+.videoPlayer {
+  position: relative;
+  video {
+    max-width: 100%;
+  }
+  &:hover {
+    .videoPlayer__controls {
+      opacity: 1;
+    }
+  }
+  .videoPlayer__controls {
+    opacity: 0;
+    transition: opacity 0.4s linear;
+    color: white;
+    position: absolute;
+    bottom: 0px;
+    padding: 10px;
+    width: 100%;
+    z-index: 9;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    font-size: 16;
+    .videoPlayer__columns:first-child {
+      display: flex;
+      align-items: center;
+      justify-self: start;
+      span:first-child {
+        margin-right: 10px;
+      }
+    }
+    .videoPlayer__columns:nth-child(2) {
+      justify-self: center;
+    }
+    .videoPlayer__columns:last-child {
+      justify-self: end;
+    }
+    i {
+      font-size: 25px;
+      cursor: pointer;
+    }
+  }
+}
