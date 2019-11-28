@@ -2,6 +2,9 @@ extends layouts/main
 
 block content
   .form-container
+    .recorder__container#jsRecorderContainer
+      video#jsRecordPreview
+      button#jsRecordBtn Start Recording
     form(action=`${routes.videos}${routes.upload}`, method="post" enctype="multipart/form-data")
       .file-upload
         label(for="videoFile") Video File

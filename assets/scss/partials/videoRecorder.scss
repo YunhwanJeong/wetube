@@ -1,0 +1,12 @@
+.recorder__container {
+  margin-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 326px;
+  video {
+    background-color: $black;
+    margin-bottom: 20px;
+  }
+}
