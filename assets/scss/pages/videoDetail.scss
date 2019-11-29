@@ -13,9 +13,10 @@
   }
   .video__title,
   .video__description,
-  .video__views {
+  .video__view {
     display: block;
     margin-bottom: 15px;
+    font-size: 13px;
   }
   .video__title {
     font-size: 22px;
@@ -23,9 +24,6 @@
   }
   .video__description {
     font-size: 16px;
-  }
-  .video__views {
-    font-size: 13px;
   }
   .video__comments {
     margin-top: 25px;

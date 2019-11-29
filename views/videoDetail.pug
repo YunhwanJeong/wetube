@@ -13,11 +13,11 @@ block content
       h5.video__title=video.title
       p.video__description=video.description
       if video.view === 0
-        span.video__views 0 view
+        span.video__view 0 view
       else if video.view === 1
-        span.video__views 1 view
+        span.video__view 1 view
       else
-        span.video__views #{video.view} views
+        span.video__view #{video.view} views
       .video__author
         |Created By 
         a(href=routes.userDetail(video.creator.id))=video.creator.name
