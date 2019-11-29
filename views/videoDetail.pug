@@ -12,12 +12,12 @@ block content
           button Edit video
       h5.video__title=video.title
       p.video__description=video.description
-      if video.views === 0
+      if video.view === 0
         span.video__views 0 view
-      else if video.views === 1
+      else if video.view === 1
         span.video__views 1 view
       else
-        span.video__views #{video.views} views
+        span.video__views #{video.view} views
       .video__author
         |Created By 
         a(href=routes.userDetail(video.creator.id))=video.creator.name
