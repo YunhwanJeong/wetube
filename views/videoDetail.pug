@@ -23,15 +23,26 @@ block content
         a(href=routes.userDetail(video.creator.id))=video.creator.name
     .video__comments
       if video.comments.length === 0
-        span.video__comments--number 0 comment
+        span.video__comments--number 
+          span#jsCommentNum 0 
+          |  comment
       else if video.comments.length === 1
-        span.video__comments--number 1 comment
+        span.video__comments--number 
+          span#jsCommentNum 1 
+          |  comment
       else
-        span.video__comments--number #{video.comments.length} comments
+        span.video__comments--number
+          span#jsCommentNum #{video.comments.length}
+          |  comments
       form.add__comment#jsAddComment
         input(type="text", placeholder="add comment")
-      ul.video__comments--list
-        each comment in video.comments
-          li
-            span=comment.text
-      
+      ul.video__comments--list#jsCommentList
+        each comment in video.comments.reverse()
+          if loggedInUser && video.creator.id === loggedInUser.id
+            li
+              span=comment.text
+              button.deleteBtn
+                i.fas.fa-trash-alt
+          else
+            li
+              span=comment.text

@@ -141,3 +141,26 @@ export const postAddComment = async (req, res) => {
     res.end();
   }
 };
+
+// Remove Comment
+
+export const postDeleteComment = async (req, res) => {
+  const {
+    params: { id },
+    body: { comment }
+  } = req;
+  try {
+    const video = await Video.findById(id)
+      .populate("creator")
+      .populate("comments");
+    const commentIndex = video.comments.indexOf({ text: comment });
+    const deletedComment = video.comments.splice(commentIndex, 1);
+    video.save();
+    const deletedCommentId = deletedComment[0].id;
+    await Comment.findByIdAndDelete(deletedCommentId);
+  } catch (error) {
+    res.status(400);
+  } finally {
+    res.end();
+  }
+};
