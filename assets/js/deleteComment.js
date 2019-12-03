@@ -13,20 +13,20 @@ const fakeDeleteComment = li => {
   decreaseCommentNum();
 };
 
-const deleteComment = async (comment, li) => {
+const deleteComment = async comment => {
   const videoId = window.location.href.split("/videos/")[1];
   await axios({
     url: `/api/${videoId}/deletecomment`,
     method: "POST",
     data: comment
   });
-  fakeDeleteComment(li);
 };
 
 const handleDeleteComment = event => {
   const li = event.target.closest("li");
   const comment = li.querySelector("span").innerHTML;
-  deleteComment(comment, li);
+  deleteComment(comment);
+  fakeDeleteComment(li);
 };
 
 const init = () => {
@@ -38,3 +38,5 @@ const init = () => {
 if (commentList) {
   init();
 }
+
+export default handleDeleteComment;

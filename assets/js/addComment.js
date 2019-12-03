@@ -1,4 +1,5 @@
 import axios from "axios";
+import handleDeleteComment from "./deleteComment";
 
 const addCommentForm = document.getElementById("jsAddComment");
 const commentList = document.getElementById("jsCommentList");
@@ -11,8 +12,15 @@ const increaseCommentNum = () => {
 const fakeRealtimeComment = comment => {
   const li = document.createElement("li");
   const span = document.createElement("span");
+  const button = document.createElement("button");
+  const i = document.createElement("i");
   span.innerHTML = comment;
   li.appendChild(span);
+  i.classList.add("fas", "fa-trash-alt");
+  button.classList.add("deleteBtn");
+  button.addEventListener("click", handleDeleteComment);
+  button.appendChild(i);
+  li.appendChild(button);
   commentList.prepend(li);
   increaseCommentNum();
 };
