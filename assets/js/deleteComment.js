@@ -2,7 +2,7 @@ import axios from "axios";
 
 const commentList = document.getElementById("jsCommentList");
 const commentNum = document.getElementById("jsCommentNum");
-const deleteBtnArr = commentList.getElementsByClassName("deleteBtn");
+let deleteBtnArr;
 
 const decreaseCommentNum = () => {
   commentNum.innerHTML = parseInt(commentNum.innerHTML, 10) - 1;
@@ -30,6 +30,7 @@ const handleDeleteComment = event => {
 };
 
 const init = () => {
+  deleteBtnArr = commentList.getElementsByClassName("deleteBtn");
   deleteBtnArr.forEach(deleteBtn =>
     deleteBtn.addEventListener("click", handleDeleteComment)
   );
