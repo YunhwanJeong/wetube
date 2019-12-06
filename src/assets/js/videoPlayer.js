@@ -1,4 +1,5 @@
 import getBlobDuration from "get-blob-duration";
+import { DocDB } from "aws-sdk";
 
 const videoContainer = document.getElementById("jsVideoPlayer");
 const videoPlayer = document.querySelector("#jsVideoPlayer video");
@@ -73,10 +74,10 @@ function getCurrentTime() {
 }
 
 async function setTotalTime() {
-  const blob = await fetch(videoPlayer.src).then(response => response.blob());
-  console.log(blob);
+  const response = await fetch(videoPlayer.src);
+  console.log(response);
+  const blob = await response.blob();
   const duration = await getBlobDuration(blob);
-  console.log(duration);
   const formattedTotalTime = formatTime(duration);
   totalTime.innerHTML = formattedTotalTime;
   setInterval(getCurrentTime, 1000);

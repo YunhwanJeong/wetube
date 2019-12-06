@@ -5,7 +5,8 @@ import routes from "./routes";
 
 const s3 = new aws.S3({
   accessKeyId: process.env.AWS_S3_ID,
-  secretAccessKey: process.env.AWS_S3_SECRET
+  secretAccessKey: process.env.AWS_S3_SECRET,
+  region: "ap-northeast-2"
 });
 
 const multerUploadVideo = multer({
