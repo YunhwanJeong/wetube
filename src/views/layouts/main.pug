@@ -1,3 +1,4 @@
+include ../mixins/flashMessage
 doctype html
 html
   head
@@ -5,6 +6,21 @@ html
     title #{pageTitle} | #{siteName}
     link(rel="stylesheet", href="/static/styles.css")
   body
+    if messages.info
+      +flashMessage({
+        type: "info",
+        text: messages.info,
+      })
+    else if messages.success
+      +flashMessage({
+        type: "success",
+        text: messages.success,
+      })
+    else if messages.error
+      +flashMessage({
+        type: "error",
+        text: messages.error,
+      })
     include ../partials/header
     main
       block content

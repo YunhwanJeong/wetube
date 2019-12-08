@@ -33,15 +33,20 @@ export const postUpload = async (req, res) => {
     body: { title, description },
     file: { location }
   } = req;
-  const newVideo = await Video.create({
-    fileUrl: location,
-    title,
-    description,
-    creator: req.user.id
-  });
-  req.user.videos.push(newVideo.id);
-  req.user.save();
-  res.redirect(routes.videoDetail(newVideo.id));
+  try {
+    const newVideo = await Video.create({
+      fileUrl: location,
+      title,
+      description,
+      creator: req.user.id
+    });
+    req.user.videos.push(newVideo.id);
+    req.user.save();
+    req.flash("success", "Video uploaded");
+    res.redirect(routes.videoDetail(newVideo.id));
+  } catch (error) {
+    req.flash("error", "Can't upload video");
+  }
 };
 
 export const videoDetail = async (req, res) => {
@@ -54,6 +59,7 @@ export const videoDetail = async (req, res) => {
       .populate("comments");
     res.render("videoDetail", { pageTitle: "Video Detail", video });
   } catch (error) {
+    req.flash("error", "Can't find video");
     res.redirect(routes.home);
   }
 };
@@ -81,8 +87,10 @@ export const postEditVideo = async (req, res) => {
   try {
     await Video.findOneAndUpdate(id, { title, description });
   } catch (error) {
+    req.flash("error", "Can't edit video");
     res.redirect(routes.home);
   }
+  req.flash("success", "Video has been updated");
   res.redirect(routes.videoDetail(id));
 };
 
@@ -93,12 +101,15 @@ export const deleteVideo = async (req, res) => {
   try {
     const video = await Video.findById(id);
     if (video.creator.toString() !== req.user.id) {
+      req.flash("error", "You can't delete this video");
       throw Error();
     } else {
       await Video.findByIdAndDelete(id);
+      req.flash("success", "Video deleted");
       res.redirect(routes.home);
     }
   } catch (error) {
+    req.flash("error", "Can't delete video now");
     res.redirect(routes.home);
   }
 };
