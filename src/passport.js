@@ -29,7 +29,7 @@ passport.use(
     {
       clientID: process.env.FACEBOOK_CLIENT_ID,
       clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-      callbackURL: `https://floating-reaches-06734.herokuapp.com/${routes.facebookCallback}`,
+      callbackURL: `https://floating-reaches-06734.herokuapp.com${routes.facebookCallback}`,
       profileFields: ["id", "displayName", "photos", "email"]
     },
     facebookLoginCallback
