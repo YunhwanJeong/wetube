@@ -18,7 +18,7 @@ passport.use(
       clientID: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
       callbackURL: process.env.PRODUCTION
-        ? `https://https://wetube-aiden.herokuapp.com${routes.githubCallback}`
+        ? `https://wetube-aiden.herokuapp.com${routes.githubCallback}`
         : `http://localhost:4000${routes.githubCallback}`
     },
     githubLoginCallback
@@ -29,7 +29,7 @@ passport.use(
     {
       clientID: process.env.FACEBOOK_CLIENT_ID,
       clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-      callbackURL: `https://https://wetube-aiden.herokuapp.com${routes.facebookCallback}`,
+      callbackURL: `https://wetube-aiden.herokuapp.com${routes.facebookCallback}`,
       profileFields: ["id", "displayName", "photos", "email"]
     },
     facebookLoginCallback
