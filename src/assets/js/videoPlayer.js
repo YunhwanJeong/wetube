@@ -1,5 +1,4 @@
 import getBlobDuration from "get-blob-duration";
-import { DocDB } from "aws-sdk";
 
 const videoContainer = document.getElementById("jsVideoPlayer");
 const videoPlayer = document.querySelector("#jsVideoPlayer video");
@@ -10,12 +9,12 @@ const currentTime = document.getElementById("jsCurrentTime");
 const totalTime = document.getElementById("jsTotalTime");
 const volumeBar = document.getElementById("jsVolumeBar");
 
-function registerView() {
+const registerView = () => {
   const videoId = window.location.href.split("/videos/")[1];
   fetch(`/api/${videoId}/view`, { method: "POST" });
-}
+};
 
-function handlePlayClick() {
+const handlePlayClick = () => {
   if (videoPlayer.paused) {
     videoPlayer.play();
     playBtn.innerHTML = '<i class="fas fa-pause"></i>';
@@ -23,9 +22,9 @@ function handlePlayClick() {
     videoPlayer.pause();
     playBtn.innerHTML = '<i class="fas fa-play"></i>';
   }
-}
+};
 
-function handleVolume() {
+const handleVolume = () => {
   if (videoPlayer.muted) {
     volumeBar.value = videoPlayer.volume;
     videoPlayer.muted = false;
@@ -35,9 +34,9 @@ function handleVolume() {
     videoPlayer.muted = true;
     volumeBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
   }
-}
+};
 
-function handleFullScreen() {
+const handleFullScreen = () => {
   const isFullScreen = document.fullscreenElement;
   if (document.fullscreenEnabled) {
     if (!isFullScreen) {
@@ -48,7 +47,7 @@ function handleFullScreen() {
       fullScreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
     }
   }
-}
+};
 
 const formatTime = seconds => {
   const secondsNumber = Math.floor(seconds);
@@ -68,28 +67,27 @@ const formatTime = seconds => {
   return `${hours}:${minutes}:${totalSeconds}`;
 };
 
-function getCurrentTime() {
+const getCurrentTime = () => {
   const formattedCurrentTime = formatTime(videoPlayer.currentTime);
   currentTime.innerHTML = formattedCurrentTime;
-}
+};
 
-async function setTotalTime() {
+const setTotalTime = async () => {
   const response = await fetch(videoPlayer.src);
-  console.log(response);
   const blob = await response.blob();
   const duration = await getBlobDuration(blob);
   const formattedTotalTime = formatTime(duration);
   totalTime.innerHTML = formattedTotalTime;
   setInterval(getCurrentTime, 1000);
-}
+};
 
-function handleEnded() {
+const handleEnded = () => {
   registerView();
   videoPlayer.currentTime = 0;
   playBtn.innerHTML = '<i class="fas fa-play"></i>';
-}
+};
 
-function handleVolumeBar(event) {
+const handleVolumeBar = event => {
   const {
     target: { value }
   } = event;
@@ -104,16 +102,16 @@ function handleVolumeBar(event) {
   } else {
     volumeBtn.innerHTML = '<i class="fas fa-volume-off"></i>';
   }
-}
+};
 
-function init() {
+const init = () => {
   playBtn.addEventListener("click", handlePlayClick);
   volumeBtn.addEventListener("click", handleVolume);
   fullScreenBtn.addEventListener("click", handleFullScreen);
   videoPlayer.addEventListener("loadedmetadata", setTotalTime);
   videoPlayer.addEventListener("ended", handleEnded);
   volumeBar.addEventListener("input", handleVolumeBar);
-}
+};
 
 if (videoContainer) {
   init();
