@@ -112,7 +112,7 @@ const init = () => {
   playBtn.addEventListener("click", handlePlayClick);
   volumeBtn.addEventListener("click", handleVolume);
   fullScreenBtn.addEventListener("click", handleFullScreen);
-  videoPlayer.addEventListener("loadedmetadata", setTotalTime);
+  videoPlayer.addEventListener("canplay", setTotalTime);
   videoPlayer.addEventListener("ended", handleEnded);
   volumeBar.addEventListener("input", handleVolumeBar);
 };
